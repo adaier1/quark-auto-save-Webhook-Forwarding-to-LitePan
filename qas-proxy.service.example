@@ -1,0 +1,14 @@
+[Unit]
+Description=QAS to LitePan webhook proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/qas_to_litepan.py
+EnvironmentFile=/etc/qas-proxy.env
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
